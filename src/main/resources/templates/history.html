@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+    <h1>Hello</h1>
+    <div class="container-fluid bg-light">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                            <table class="table table-striped" th:if="${employee}">
+                                <thead>
+                                <tr>
+                                    <th>Food Id</th>
+                                    <th>Food Name</th>
+                                    <th>Price</th>
+                                    <th>Date</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="menu : ${employee.menus}">
+                                    <td th:text="${menu.id}"></td>
+                                    <td th:text="${menu.name}"></td>
+                                    <td th:text="${menu.price}"></td>
+                                    <td th:text="${menu.orderedDate}"></td>
+<!--                                    <td th:text="${e.email}"></td>-->
+<!--                                    <td th:text="${e.totalCostOfEmployee}"></td>-->
+<!--                                    <td ><input type="text" th:field="*{cartItemQuantity}" class="form-control"></td>-->
+<!--                                    <td th:text="${'$' + item.price}"></td>-->
+<!--                                    <td><a th:href="@{'/cart/delete?id=' + ${e.id}}"-->
+<!--                                           class="btn btn-outline-primary">Show More</a></td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                            <td><a th:href="@{/home}" class="btn btn-outline-primary">Back to Home</a></td>
+                            <div th:if="${employee.menus.isEmpty()}">
+                                <h4 class="text-center text-muted">There Is No Ordered History</h4>
+                            </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

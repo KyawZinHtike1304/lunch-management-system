@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main" id="info">
+    <div class="container-fluid bg-light">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10 ">
+                    <div class="card ">
+                        <div class="card-header">
+                            <h1 class="text-center">Profile Information</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col p-3">
+                                    <h4 class="mb-5">Employee Name:</h4>
+                                    <h4 class="mb-5">Role:</h4>
+                                    <h4 class="mb-5">Department:</h4>
+                                    <h4 class="mb-5">Email Address:</h4>
+                                    <h4 class="mb-2">Total Salary Cut Off:</h4>
+                                </div>
+                                <div class="col p-3">
+                                    <h4 class=" mb-5 " th:text="${employee.userName}"></h4>
+                                    <h4 class=" mb-5 " th:text="${employee.roles}"></h4>
+                                    <h4 class=" mb-5 " th:text="${employee.department}"></h4>
+                                    <h4 class=" mb-5 " th:text="${employee.email}"></h4>
+                                    <h4 class=" mb-2 " th:text="${employee.totalCostOfEmployee}"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface EmployeeDao extends JpaRepository<Employee,Integer> {
 
-    Optional<Employee> findEmployeeByUserName(String customerName);
+    Employee findEmployeeByUserName(String customerName);
+
 }

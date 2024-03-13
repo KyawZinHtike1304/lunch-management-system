@@ -3,6 +3,7 @@ package com.example.lunchmanagement.controller;
 import com.example.lunchmanagement.entity.Employee;
 import com.example.lunchmanagement.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,4 +43,6 @@ public class AuthController {
         model.addAttribute("loginError",true);
         return "login";
     }
+
+
 }

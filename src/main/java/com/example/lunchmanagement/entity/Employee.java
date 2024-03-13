@@ -22,16 +22,22 @@ public class Employee {
     private String password;
     private String department;
     private String email;
+    private int employeeCost;
+    private int companyCost;
+    private int totalCostOfEmployee;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles =new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Menu> menus = new ArrayList<>();
+
     @OneToMany(mappedBy = "employee")
     private List<LunchAttendance> lunchAttendances = new ArrayList<>();
 
-    @ManyToOne
-    private LunchCost lunchCost;
-
+    public void addMenu(Menu menu){
+        menus.add(menu);
+    }
     public void addLunchAttendances(LunchAttendance lunchAttendance){
         lunchAttendance.setEmployee(this);
         lunchAttendances.add(lunchAttendance);

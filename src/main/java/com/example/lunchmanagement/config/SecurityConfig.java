@@ -46,8 +46,8 @@ public class SecurityConfig {
         });
 
         http.authorizeHttpRequests(a ->{
-            a.requestMatchers("/bootstrap/**","/book/**","/cart/**","/","/home","/auth/**",
-                            "/register","/save-employee","/info")
+            a.requestMatchers("/bootstrap/**","/history/**","/cart/**","/","/home","/auth/**",
+                            "/register","/save-employee")
                     .permitAll()
 //                    .requestMatchers(HttpMethod.POST,"/auth/register,").permitAll()
                     .anyRequest().authenticated();

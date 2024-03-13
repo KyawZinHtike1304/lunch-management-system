@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+    <h1>Hello</h1>
+    <div class="container-fluid bg-light">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped" th:if="${employees}">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Total Salary Cut off</th>
+                            <th>Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="e : ${employees}" th:if="${e.id}!=1">
+                            <td th:text="${e.id}"></td>
+                            <td th:text="${e.userName}"></td>
+                            <td th:text="${e.department}"></td>
+                            <td th:text="${e.email}"></td>
+                            <td th:text="${e.totalCostOfEmployee}"></td>
+                            <!--                                    <td ><input type="text" th:field="*{cartItemQuantity}" class="form-control"></td>-->
+                            <!--                                    <td th:text="${'$' + item.price}"></td>-->
+<!--                            <td><a th:href="@{'/cart/delete?id=' + ${e.id}}"-->
+<!--                                   class="btn btn-outline-primary">Show More</a></td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:if="${employees.isEmpty()}">
+                        <h4 class="text-center text-muted">There Is No Ordered History</h4>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
