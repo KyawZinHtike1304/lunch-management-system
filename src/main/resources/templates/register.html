@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main" id="register">
+    <div class="container-fluid bg-light mt-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="card col-md-6">
+                    <div class="card-header">
+                        <h4 class="text-center">Employee Registration</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/save-employee}" th:object="${employee}"
+                              method="post">
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label class="form-label">Employee Name</label>
+                                    <input type="text" th:field="*{userName}" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="text" th:field="*{password}" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Department</label>
+                                    <input type="text" th:field="*{department}" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" th:field="*{email}" class="form-control">
+                                </div>
+
+                            </div>
+
+
+                            <input type="submit" value="Register" class="btn btn-primary btn-outline-success text-white">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

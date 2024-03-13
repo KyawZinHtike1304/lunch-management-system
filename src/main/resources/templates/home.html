@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<main role="main">
+    <div class="container-fluid bg-light">
+        <div class="container p-5">
+            <div class="text-center" sec:authorize="!isAuthenticated()">
+<!--                <h1 class="display-1 text-info-emphasis">Employee</h1>-->
+<!--                <h1 class="display-1 text-info-emphasis">Canteen</h1>-->
+                <p class="display-5 lead d-none d-md-block text-primary-emphasis">
+                    You need to login in first in order to have a lunch.
+                </p>
+            </div>
+            <section>
+                <div class="container text-center mt-4">
+                    <h1>Available Menu</h1>
+                    <div class="row">
+                        <div class="col-md-4" th:each="m : ${menu}">
+                            <div class="card mb-3">
+                                <img th:src="${m.imgUrl}" class="img-thumbnail" alt="">
+                                <div class="card-body d-flex justify-content-between" >
+                                    <h5 class="card-title" th:text="${m.name}"></h5>
+                                    <p class="lead" th:text="${m.price}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="explore">
+                <div class="container text-center mt-4">
+                    <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                    <blockquote class="blockquote">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolor nobis possimus soluta sunt! Accusamus accusantium asperiores commodi culpa, explicabo fugiat in iste, iure iusto mollitia nisi officia recusandae, vero.
+                        <footer class="blockquote-footer mt-3">Richard Chan</footer>
+                    </blockquote>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+
+</main>
+</body>
+</html>
