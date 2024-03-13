@@ -53,8 +53,16 @@
             <a th:href="@{/cart/view-cart#view-cart}" class="me-2 btn btn-outline-primary">
                 <i class="fas fa-cart-plus me-2 d-inline"></i>Cart
             </a>
-            <a th:href="@{/info#info}" class="me-2 btn btn-outline-primary">
-                <i class="fa-solid fa-user"></i>Profile</a>
+
+            <div th:if="${ @securityUtils.hasRole('ROLE_ADMIN')}" class="d-inline-block">
+                <a th:href="@{/info#info}" class="me-2 btn btn-outline-primary">
+                    <i class="fa-solid fa-user"></i>Supervisor</a>
+            </div>
+            <div th:if="${ @securityUtils.hasRole('ROLE_USER')}" class="d-inline-block">
+                <a th:href="@{/info#info}" class="me-2 btn btn-outline-primary">
+                    <i class="fa-solid fa-user"></i>Profile</a>
+            </div>
+
 
             <a href="javascript: document.logoutForm.submit()" class="me-2 btn btn-outline-primary">Logout</a>
 
