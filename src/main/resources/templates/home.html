@@ -5,16 +5,16 @@
 
 <body>
 
-<main role="main">
+<main role="main" >
     <div class="container-fluid bg-light mt-5">
         <div class="container p-5">
             <div class="text-center" sec:authorize="!isAuthenticated()">
                 <p class="display-5 lead d-none d-md-block text-primary-emphasis">
-                    You need to log in first in order to have lunch.
+                    In order to have lunch,you need to log in first.
                 </p>
             </div>
             <section>
-                <div class="container text-center mt-4">
+                <div class="container text-center mt-4" id="menu">
                     <h1>Available Menu</h1>
                     <div class="row">
                         <div class="col-md-4" th:each="m : ${menu}">
@@ -25,7 +25,7 @@
                                     <p class="lead" th:text="${m.price}+' ks'"></p>
                                     <a sec:authorize="isAuthenticated()" th:if="${ @securityUtils.hasRole('ROLE_USER')}"
                                        th:href="@{'/add-history?menuId=' + ${m.id} + '&price=' + ${m.price}}"
-                                       class="text-end mb-3 btn btn-outline-primary">Eat</a>
+                                       class="text-end mb-3 btn btn-outline-primary">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -36,10 +36,8 @@
 
             <section id="explore">
                 <div class="container text-center mt-4">
-                    <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
                     <blockquote class="blockquote">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolor nobis possimus soluta sunt! Accusamus accusantium asperiores commodi culpa, explicabo fugiat in iste, iure iusto mollitia nisi officia recusandae, vero.
-                        <footer class="blockquote-footer mt-3">Richard Chan</footer>
                     </blockquote>
                 </div>
             </section>

@@ -22,9 +22,8 @@ public class Employee {
     private String password;
     private String department;
     private String email;
-    private int employeeCost;
     private int companyCost;
-    private int totalCostOfEmployee;
+    private int totalSalaryDeduction;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles =new HashSet<>();
@@ -32,15 +31,9 @@ public class Employee {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Menu> menus = new ArrayList<>();
 
-    @OneToMany(mappedBy = "employee")
-    private List<LunchAttendance> lunchAttendances = new ArrayList<>();
 
     public void addMenu(Menu menu){
         menus.add(menu);
-    }
-    public void addLunchAttendances(LunchAttendance lunchAttendance){
-        lunchAttendance.setEmployee(this);
-        lunchAttendances.add(lunchAttendance);
     }
 
     public void addRole(Role role) {

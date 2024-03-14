@@ -16,13 +16,9 @@ public class EmployeeUserDetailsService implements UserDetailsService {
     private final EmployeeDao employeeDao;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return employeeDao.findEmployeeByUserName(username)
-//                .map(EmployeeSecurity::new)
-//                .orElseThrow(()->new UsernameNotFoundException("Error!"));
         Optional<Employee> employee= Optional.of(employeeDao.findEmployeeByUserName(username));
         return employee
                 .map(EmployeeSecurity::new)
                 .orElseThrow(()->new UsernameNotFoundException("Error!"));
-
     }
 }

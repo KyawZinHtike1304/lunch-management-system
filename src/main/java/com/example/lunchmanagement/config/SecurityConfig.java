@@ -46,10 +46,9 @@ public class SecurityConfig {
         });
 
         http.authorizeHttpRequests(a ->{
-            a.requestMatchers("/bootstrap/**","/history/**","/cart/**","/","/home","/auth/**",
+            a.requestMatchers("/bootstrap/**","/history/**","/","/home","/auth/**",
                             "/register","/save-employee")
                     .permitAll()
-//                    .requestMatchers(HttpMethod.POST,"/auth/register,").permitAll()
                     .anyRequest().authenticated();
         });
         http.csrf(c -> c.disable());

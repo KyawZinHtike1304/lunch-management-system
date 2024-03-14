@@ -7,7 +7,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-10 ">
-                    <div class="card ">
+                    <div class="card mt-5">
                         <div class="card-header">
                             <h1 class="text-center">Profile Information</h1>
                         </div>
@@ -18,14 +18,16 @@
                                     <h4 class="mb-5">Role:</h4>
                                     <h4 class="mb-5">Department:</h4>
                                     <h4 class="mb-5">Email Address:</h4>
-                                    <h4 class="mb-2">Total Salary Cut Off:</h4>
+                                    <h4 class="mb-2">Total Salary Cut Off:(70% of Total Cost)</h4>
                                 </div>
                                 <div class="col p-3">
                                     <h4 class=" mb-5 " th:text="${employee.userName}"></h4>
-                                    <h4 class=" mb-5 " th:text="${employee.roles}"></h4>
+                                    <h4 th:each="role : ${employee.roles}" class="mb-5"
+                                        th:text="${role.roleName}">
+                                    </h4>
                                     <h4 class=" mb-5 " th:text="${employee.department}"></h4>
                                     <h4 class=" mb-5 " th:text="${employee.email}"></h4>
-                                    <h4 class=" mb-2 " th:text="${employee.totalCostOfEmployee}"></h4>
+                                    <h4 class=" mb-2 " th:text="${employee.totalSalaryDeduction}+' ks'"></h4>
                                 </div>
                             </div>
                         </div>

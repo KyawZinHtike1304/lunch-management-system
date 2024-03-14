@@ -9,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
@@ -29,28 +28,19 @@ public class HistoryController {
         return "history";
     }
 
-    @GetMapping("/management")
-    private String management(Model model){
-        model.addAttribute("employees",employeeDao.findAll());
-        return "management";
-    }
-
     @GetMapping("/add-history")
     public String addHistory(@RequestParam("menuId")int menuId,
                                @RequestParam("price")int price, Model model,
                              Authentication authentication){
 
-        double percentage = 0.5;
         String employeeName = authentication.getName();
 
         Employee employee = employeeDao.findEmployeeByUserName(employeeName);
-        int employeeCost = employee.getEmployeeCost ()+(int) (price * 0.5);
-        int companyCost =employee.getCompanyCost() + (int) (price * 0.5);
-        int totalCost = employee.getTotalCostOfEmployee() + employeeCost;
+        int employeeCost = employee.getTotalSalaryDeduction()+(int) (price * 0.7);
+        int companyCost =employee.getCompanyCost() + (int) (price * 0.3);
 
-        employee.setEmployeeCost(employeeCost);
+        employee.setTotalSalaryDeduction(employeeCost);
         employee.setCompanyCost(companyCost);
-        employee.setTotalCostOfEmployee(totalCost);
 
         Menu menu = menuDao.findMenuById(menuId);
         menu.setOrderedDate(LocalDateTime.now());

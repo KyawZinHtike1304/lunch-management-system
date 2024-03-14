@@ -22,6 +22,7 @@ public class AuthController {
         model.addAttribute("employee",new Employee());
         return "register";
     }
+
     @GetMapping("/login")
     public String login(){
         return "login";
@@ -29,11 +30,9 @@ public class AuthController {
 
     @PostMapping("/save-employee")
     public String saveEmployee(Employee employee, BindingResult result){
-
         if (result.hasErrors()){
             return "register";
         }
-
         authService.register(employee);
         return "redirect:/home";
     }
@@ -43,6 +42,4 @@ public class AuthController {
         model.addAttribute("loginError",true);
         return "login";
     }
-
-
 }

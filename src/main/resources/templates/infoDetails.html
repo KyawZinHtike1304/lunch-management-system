@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+    <h1>Hello</h1>
+    <div class="container-fluid bg-light">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center bold">Employee Information About Lunch</h1>
+                    <table class="table table-striped" th:if="${employee}">
+                        <thead>
+                        <tr>
+                            <th>Employee Id</th>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Cost From Company</th>
+                            <th>Total Salary Deduction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${employee.id}"></td>
+                            <td th:text="${employee.userName}"></td>
+                            <td th:text="${employee.department}"></td>
+                            <td th:text="${employee.email}"></td>
+                            <td th:text="${employee.companyCost}"></td>
+                            <td th:text="${employee.totalSalaryDeduction}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center bold">Lunch Details Of Employee</h1>
+                    <table class="table table-striped" th:if="${employee}">
+                        <thead>
+                        <tr>
+                            <th>Food Id</th>
+                            <th>Food Name</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="menu : ${employee.menus}">
+                            <td th:text="${menu.id}"></td>
+                            <td th:text="${menu.name}"></td>
+                            <td th:text="${menu.price}"></td>
+                            <td th:text="${menu.orderedDate}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a th:href="@{/management/info}" class="btn btn-outline-primary">Back</a>
+                    <div th:if="${employee.menus.isEmpty()}">
+                        <h4 class="text-center text-muted">There Is No Ordered History</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

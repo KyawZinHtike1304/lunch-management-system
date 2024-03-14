@@ -33,20 +33,20 @@
             </li>
 
             <li class="nav-item">
-                <a th:href="@{/#quotes}" class="nav-link text-white">About</a>
+                <a th:href="@{/#}" class="nav-link text-white">About</a>
             </li>
 
             <li class="nav-item">
-                <a th:href="@{/#explore}" class="nav-link text-white">Explore</a>
+                <a th:href="@{/#}" class="nav-link text-white">Explore</a>
             </li>
 
             <li class="nav-item">
-                <a th:href="@{/book/list-books#lists}" class="nav-link text-white">Books</a>
+                <a th:href="@{/#menu}" class="nav-link text-white">Menu</a>
             </li>
         </ul>
         <div sec:authorize="!isAuthenticated()">
-            <a th:href="@{/login}" class="me-2 btn btn-outline-primary">Login</a>
             <a th:href="@{/register}" class="me-2 btn btn-outline-primary">Register</a>
+            <a th:href="@{/login}" class="me-2 btn btn-outline-primary">Login</a>
         </div>
 
         <div sec:authorize="isAuthenticated()">
@@ -58,7 +58,7 @@
             </div>
 
             <div th:if="${ @securityUtils.hasRole('ROLE_ADMIN')}" class="d-inline-block">
-                <a th:href="@{/management}" class="me-2 btn btn-outline-primary">
+                <a th:href="@{/management/info}" class="me-2 btn btn-outline-primary">
                     <i class="fa-solid fa-user"></i>Management</a>
             </div>
 
@@ -78,7 +78,7 @@
 <div th:replace="${main}"></div>
 
 <section id="footer" class="bg-secondary p-4 text-white fixed-bottom">
-    <ul class="nav text-center justify-content-between flex-column flex-sm-row">
+    <ul class="nav text-center justify-content-center flex-column flex-sm-row">
         <li class="nav-item">
             <a href="#" class="nav-link">FAQ</a>
         </li>
@@ -92,7 +92,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">BOOK NOW</a>
+            <a href="#" class="nav-link">ORDER NOW</a>
         </li>
 
         <li class="nav-item">

@@ -15,7 +15,7 @@
                             <th>Name</th>
                             <th>Department</th>
                             <th>Email</th>
-                            <th>Total Salary Cut off</th>
+                            <th>Total Salary Cut off (70% of Total Cost)</th>
                             <th>Details</th>
                         </tr>
                         </thead>
@@ -25,19 +25,18 @@
                             <td th:text="${e.userName}"></td>
                             <td th:text="${e.department}"></td>
                             <td th:text="${e.email}"></td>
-                            <td th:text="${e.totalCostOfEmployee}"></td>
-                            <!--                                    <td ><input type="text" th:field="*{cartItemQuantity}" class="form-control"></td>-->
-                            <!--                                    <td th:text="${'$' + item.price}"></td>-->
-<!--                            <td><a th:href="@{'/cart/delete?id=' + ${e.id}}"-->
-<!--                                   class="btn btn-outline-primary">Show More</a></td>-->
+                            <td th:text="${e.totalSalaryDeduction}"></td>
+                            <td><a th:href="@{'/management/details?empId=' + ${e.id}}"
+                                   class="btn btn-outline-primary">Show More</a></td>
                         </tr>
                         </tbody>
                     </table>
+
                     <div th:if="${employees.isEmpty()}">
                         <h4 class="text-center text-muted">There Is No Ordered History</h4>
                     </div>
 
-
+                    <a th:href="@{/}" class="btn btn-outline-primary">Back To Home</a>
 
                 </div>
             </div>

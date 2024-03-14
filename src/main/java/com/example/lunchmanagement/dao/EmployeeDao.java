@@ -9,4 +9,6 @@ public interface EmployeeDao extends JpaRepository<Employee,Integer> {
 
     Employee findEmployeeByUserName(String customerName);
 
+    Employee findEmployeeById(int id);
+
 }

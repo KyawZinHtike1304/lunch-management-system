@@ -47,7 +47,7 @@ public class LunchManagementApplication {
     }
 
     @Transactional
-    @Profile("data") // for don't add data
+    @Profile("data")
     @Bean
     public ApplicationRunner runner() {
         return r -> {
