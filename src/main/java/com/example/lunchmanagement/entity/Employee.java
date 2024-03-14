@@ -28,17 +28,25 @@ public class Employee {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles =new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee")
     private List<Menu> menus = new ArrayList<>();
 
-
-    public void addMenu(Menu menu){
-        menus.add(menu);
-    }
+    @OneToMany(mappedBy = "employee")
+    private List<Booking> bookings = new ArrayList<>();
 
     public void addRole(Role role) {
         role.getEmployees().add(this);
         this.roles.add(role);
+    }
+
+    public void addMenu(Menu menu){
+        menu.setEmployee(this);
+        menus.add(menu);
+    }
+
+    public void addBooking(Booking booking){
+        booking.setEmployee(this);
+        bookings.add(booking);
     }
 
     public Employee(String userName, String password, String department, String email) {

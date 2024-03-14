@@ -14,15 +14,15 @@
                                     <th>Food Id</th>
                                     <th>Food Name</th>
                                     <th>Price</th>
-                                    <th>Date</th>
+                                    <th>Ordered Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="menu : ${employee.menus}">
-                                    <td th:text="${menu.id}"></td>
-                                    <td th:text="${menu.name}"></td>
-                                    <td th:text="${menu.price}+' ks'"></td>
-                                    <td th:text="${menu.orderedDate}"></td>
+                                <tr th:each="booking : ${employee.bookings}">
+                                    <td th:text="${booking.menu.id}"></td>
+                                    <td th:text="${booking.menu.name}"></td>
+                                    <td th:text="${booking.menu.price}+' ks'"></td>
+                                    <td th:text="${booking.orderedTime}"></td>
                                 </tr>
                                 </tbody>
                             </table>

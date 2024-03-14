@@ -1,7 +1,9 @@
 package com.example.lunchmanagement.controller;
 
+import com.example.lunchmanagement.dao.BookingDao;
 import com.example.lunchmanagement.dao.EmployeeDao;
 import com.example.lunchmanagement.dao.MenuDao;
+import com.example.lunchmanagement.entity.Booking;
 import com.example.lunchmanagement.entity.Employee;
 import com.example.lunchmanagement.entity.Menu;
 import lombok.RequiredArgsConstructor;
@@ -11,14 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDateTime;
-
 @RequiredArgsConstructor
 @Controller
 public class HistoryController {
 
     private final EmployeeDao employeeDao;
     private final MenuDao menuDao;
+    private final BookingDao bookingDao;
 
     @GetMapping("/history")
     public String history(Authentication authentication,Model model){
@@ -36,19 +37,22 @@ public class HistoryController {
         String employeeName = authentication.getName();
 
         Employee employee = employeeDao.findEmployeeByUserName(employeeName);
+        Menu menu = menuDao.findMenuById(menuId);
+        Booking booking = new Booking();
+
         int employeeCost = employee.getTotalSalaryDeduction()+(int) (price * 0.7);
         int companyCost =employee.getCompanyCost() + (int) (price * 0.3);
 
         employee.setTotalSalaryDeduction(employeeCost);
         employee.setCompanyCost(companyCost);
 
-        Menu menu = menuDao.findMenuById(menuId);
-        menu.setOrderedDate(LocalDateTime.now());
         employee.addMenu(menu);
-        menu.addEmployee(employee);
+        employee.addBooking(booking);
+        menu.addBooking(booking);
 
         employeeDao.save(employee);
         menuDao.save(menu);
+        bookingDao.save(booking);
 
         return "success";
     }
