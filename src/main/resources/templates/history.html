@@ -24,6 +24,10 @@
                                     <td th:text="${booking.menu.price}+' ks'"></td>
                                     <td th:text="${booking.orderedTime}"></td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">Total Cost</td>
+                                    <td  colspan="2" th:text="${employee.totalCost} +' ks'"></td>
+                                </tr>
                                 </tbody>
                             </table>
                             <a th:href="@{/home}" class="btn btn-outline-primary">Back to Home</a>

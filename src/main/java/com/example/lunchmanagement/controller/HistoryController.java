@@ -42,9 +42,11 @@ public class HistoryController {
 
         int employeeCost = employee.getTotalSalaryDeduction()+(int) (price * 0.7);
         int companyCost =employee.getCompanyCost() + (int) (price * 0.3);
+        int totalCost = employee.getTotalCost() + price;
 
         employee.setTotalSalaryDeduction(employeeCost);
         employee.setCompanyCost(companyCost);
+        employee.setTotalCost(totalCost);
 
         employee.addMenu(menu);
         employee.addBooking(booking);

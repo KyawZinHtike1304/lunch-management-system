@@ -24,6 +24,7 @@ public class Employee {
     private String email;
     private int companyCost;
     private int totalSalaryDeduction;
+    private int totalCost;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles =new HashSet<>();
