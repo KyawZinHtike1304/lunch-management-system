@@ -27,7 +27,7 @@ public class LunchManagementApplication {
 
     @Bean
     @Transactional
-    @Profile("security")
+//    @Profile("security")
     public ApplicationRunner runner1(){
         return r -> {
             Role admin = new Role();
@@ -47,7 +47,7 @@ public class LunchManagementApplication {
     }
 
     @Transactional
-    @Profile("data")
+//    @Profile("data")
     @Bean
     public ApplicationRunner runner() {
         return r -> {
